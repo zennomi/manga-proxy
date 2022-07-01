@@ -1,12 +1,12 @@
 import { SourceInfo } from "paperback-extensions-common";
 import axios, { AxiosResponse, AxiosRequestConfig } from "axios";
 import { Constructor } from "./types";
-import { PROXY_URL, base64UrlEncode } from "./SourceUtils";
+import { PROXY_URL,CORS_PROXY_URL, base64UrlEncode } from "./SourceUtils";
 
 const UNSAFE_HEADERS = new Set(["cookie", "user-agent", "referer"]);
 
 const requestInterceptor = (req: AxiosRequestConfig) => {
-  req.url = `${PROXY_URL}/v1/cors/${base64UrlEncode(
+  req.url = `${CORS_PROXY_URL}/v1/cors/${base64UrlEncode(
     req.url + (req.params ?? "")
   )}?source=proxy_cubari_moe`;
   Object.keys(req.headers).forEach((header) => {
@@ -26,8 +26,8 @@ const retryInterceptor = (error: any) => {
     !error.config.retried
   ) {
     error.config.url = error.config.url.replace(
-      `${PROXY_URL}/v1/cors`,
-      `${PROXY_URL}/v2/cors`
+      `${CORS_PROXY_URL}/v1/cors`,
+      `${CORS_PROXY_URL}/v2/cors`
     );
     error.config.retried = true;
     return axios.request(error.config);

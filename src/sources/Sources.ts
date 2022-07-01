@@ -26,6 +26,15 @@ const nsfwSourceMap: RawSourceMap = {
 };
 
 const sfwSourceMap: RawSourceMap = {
+  Blogtruyen: {
+    user: "Huynh12345678",
+    repo: "Extensions-Viet",
+    commit: "ea59eaf16c68a5a57a0fc4ee912be348bfbe7842",
+    filePath: "Blogtruyen",
+    state: {},
+    slugMapper: (slug) =>
+      `https://romcom.zenno.moe/wibu/read/blogtruyen/${slug.split("/")[1]}/`,
+  },
   Guya: {
     user: "Paperback-iOS",
     repo: "extensions-promises",
@@ -74,7 +83,7 @@ const sfwSourceMap: RawSourceMap = {
     filePath: "AssortedScans",
     state: {},
     slugMapper: (slug) =>
-      `https://cubari.moe/ma/https://assortedscans.com/reader/${slug}/`
+      `https://cubari.moe/ma/https://assortedscans.com/reader/${slug}/`,
   },
 };
 

@@ -4,9 +4,9 @@ import { Base64 } from "js-base64";
 import { CubariSource, State } from "./types";
 
 const PROXY_URL = "https://services.f-ck.me";
+const CORS_PROXY_URL = "https://api.zenno.moe";
 
-const IMAGE_RESIZE_URL =
-  "https://images.weserv.nl";
+const IMAGE_RESIZE_URL = "https://images.weserv.nl";
 
 const getJsDelivrBaseUrl = (
   user: string,
@@ -78,11 +78,13 @@ const convertImageUrl = (originalUrl: string): string => {
 };
 
 const resizedImageUrl = (url: string, queryParams: string): string => {
-  return `${IMAGE_RESIZE_URL}/?url=${url}&${queryParams ?? ""}`;
+  // return `${IMAGE_RESIZE_URL}/?url=${url}&${queryParams ?? ""}`;
+  return url;
 };
 
 export {
   PROXY_URL,
+  CORS_PROXY_URL,
   loadExternalSource,
   getJsDelivrBaseUrl,
   base64UrlEncode,
